@@ -1,0 +1,30 @@
+(define (cc amount largest-coin)
+  (cond ((or (= amount 0) (= largest-coin 1)) 1)
+  ((not(and (> amount 0) (> largest-coin 0))) 0)
+  (else (+ (cc amount (next-coin largest-coin)) (cc (- amount largest-coin) largest-coin)))))
+
+
+(define (count-change amount)
+	(cc amount LAGEST-COIN))
+
+
+(define (next-coin coin)
+	(cond ((= coin 25) 15)
+		((= coin 15) 5)
+		((= coin 5) 2)
+		(else 0)))
+
+(define (GR-AMOUNT)
+	(* 10 LAST-DIGIT-OF-GROUP-NUMBER))
+
+(define LAGEST-COIN 25)
+(define LAST-DIGIT-OF-GROUP-NUMBER 8)
+
+" SPA variant 17"
+" 2-5-15-25"
+"count-change for 100 \t= "
+(count-change 100)
+"count-change for "
+(GR-AMOUNT)
+" \t= "
+(count-change (GR-AMOUNT))
